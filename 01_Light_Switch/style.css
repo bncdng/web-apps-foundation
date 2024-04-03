@@ -1,0 +1,41 @@
+:root {
+  --color-bg-light: #fffafa;
+  --color-bg-dark: #343434;
+  --color-glow: #dad809;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: var(--color-bg-light);
+}
+
+button {
+  all: unset;
+  width: 150px;
+  border: 0.5rem solid black;
+  border-radius: 0.25rem;
+  padding: 5px;
+  margin: 0 auto;
+  margin-top: 50vh;
+  display: flex;
+  justify-content: center;
+}
+
+.dark {
+  background-color: var(--color-bg-dark);
+
+  button {
+    border-color: var(--color-bg-light);
+    box-shadow: 0 0 20px 10px var(--color-glow);
+    color: var(--color-bg-light);
+  }
+}
