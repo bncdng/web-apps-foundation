@@ -4,32 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <title>Color Mixer</title>
 </head>
 
 <body>
-    <header>
-        <div class="slideContainer">
-            <!-- Slider R  -->
+    <!-- Slider R  -->
+    <label for="red">r</label>
+    <input type="range" min="0" max="255" value="50" step="1" id="red">
 
-            <label for="rangeSlider_R">r</label>
-            <input type="range" min="0" max="255" value="50" step="1" id="rangeSlider_R">
+    <!-- Slider G -->
+    <label for="green">g</label>
+    <input type="range" min="0" max="255" value="50" step="1" id="green">
 
-            <!-- Slider G -->
-            <label for="rangeSlider_G">g</label>
-            <input type="range" min="0" max="255" value="50" step="1" id="rangeSlider_G">
+    <!-- Slider B -->
+    <label for="blue">b</label>
+    <input type="range" min="0" max="255" value="50" step="1" id="blue">
 
-            <!-- Slider B -->
-            <label for="rangeSlider_B">b</label>
-            <input type="range" min="0" max="255" value="50" step="1" id="rangeSlider_B">
-        </div>
-        <!-- Hex -->
-        <output id="hex">#000000</output>
-    </header>
-
-    <!-- Farbfläche -->
-    <main id="colorDisplay"></main>
+    <!-- Hex -->
+    <div id="hex">#000000</div>
+    
     <script src="script.js"></script>
 </body>
 

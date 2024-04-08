@@ -11,12 +11,22 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #ffdaed;
   padding: 1.5rem;
 }
 
 #colorDisplay {
   width: 100vw;
   height: 100vh;
-  background-color: #ff69b4;
+}
+
+#red {
+  accent-color: red;
+}
+
+#green {
+  accent-color: green;
+}
+
+#blue {
+  accent-color: blue;
 }
