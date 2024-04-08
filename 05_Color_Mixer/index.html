@@ -9,6 +9,27 @@
 </head>
 
 <body>
+    <header>
+        <div class="slideContainer">
+            <!-- Slider R  -->
+
+            <label for="rangeSlider_R">r</label>
+            <input type="range" min="0" max="255" value="50" step="1" id="rangeSlider_R">
+
+            <!-- Slider G -->
+            <label for="rangeSlider_G">g</label>
+            <input type="range" min="0" max="255" value="50" step="1" id="rangeSlider_G">
+
+            <!-- Slider B -->
+            <label for="rangeSlider_B">b</label>
+            <input type="range" min="0" max="255" value="50" step="1" id="rangeSlider_B">
+        </div>
+        <!-- Hex -->
+        <output id="hex">#000000</output>
+    </header>
+
+    <!-- Farbfläche -->
+    <main id="colorDisplay"></main>
     <script src="script.js"></script>
 </body>
 
