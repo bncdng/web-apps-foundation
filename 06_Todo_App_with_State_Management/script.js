@@ -12,7 +12,7 @@ let state = {
 
 // Render Function
 function render() {
-  // Tisch abräumen
+  // Clear Todo List
   todoList.innerHTML = "";
 
   // Create HTML list item
@@ -20,6 +20,7 @@ function render() {
     const input = document.createElement("input");
     input.type = "checkbox";
     input.name = "done";
+    input.id = "check";
     input.checked = todo.done;
 
     const span = document.createElement("span");
@@ -27,6 +28,7 @@ function render() {
 
     const label = document.createElement("label");
     label.append(input, span);
+    label.for = "check";
 
     const form = document.createElement("form");
     form.append(label);
@@ -41,15 +43,26 @@ function render() {
 render();
 
 // Add new Todo Function
-const newTodo = document.getElementById("newTodo");
-let count = 0;
+function addNewTodo(event) {
+  event.preventDefault(); // Keep page from refreshing
 
-function addNewTodo() {
-  state.todos.push({
-    description: newTodo.value,
-    id: Date.now(),
-  });
-  return addNewTodo;
+  const newTodo = document.getElementById("newTodo");
+
+  const inputValue = newTodo.value.trim(); // Trim whitespace
+
+  let idCounter = Date.now(); // Initialze id counter
+
+  if (inputValue !== "") {
+    state.todos.push({
+      description: inputValue,
+      id: idCounter++,
+      done: false,
+    });
+
+    render();
+    // Clear input field after adding new todo
+    newTodo.value = "";
+  }
 }
 
 // Event Listener
