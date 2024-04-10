@@ -1,5 +1,6 @@
 // Get elements from HTML
 const todoList = document.getElementById("todoList");
+const addTodoForm = document.getElementById("addTodoForm");
 
 // State
 let state = {
@@ -9,6 +10,15 @@ let state = {
   ],
   filter: "",
 };
+
+// Load from Local Storage
+function loadFromLocalStorage() {
+  const loadedState = localStorage.getItem("todoStateV1");
+  if (loadedState == null) {
+    return;
+  }
+  state = JSON.parse(loadedState);
+}
 
 // Render Function
 function render() {
@@ -22,6 +32,14 @@ function render() {
     input.name = "done";
     input.id = "check";
     input.checked = todo.done;
+
+    input.addEventListener("change", () => {
+      // State update when checkbox is changed
+      todo.done = input.checked;
+      localStorage.setItem("todoStateV1", JSON.stringify(state));
+
+      render();
+    });
 
     const span = document.createElement("span");
     span.textContent = todo.description;
@@ -40,33 +58,49 @@ function render() {
   });
 }
 
-render();
+// Event Listener for form submission
+addTodoForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-// Add new Todo Function
-function addNewTodo(event) {
-  event.preventDefault(); // Keep page from refreshing
+  // Validate and trim input value
+  const inputValue = newTodo.value.trim();
 
-  const newTodo = document.getElementById("newTodo");
-
-  const inputValue = newTodo.value.trim(); // Trim whitespace
-
-  let idCounter = Date.now(); // Initialze id counter
-
-  if (inputValue !== "") {
-    state.todos.push({
-      description: inputValue,
-      id: idCounter++,
-      done: false,
-    });
-
-    render();
-    // Clear input field after adding new todo
-    newTodo.value = "";
+  // Can't be empty
+  if (inputValue == "") {
+    alert("Please insert Description");
+    return;
   }
-}
 
-// Event Listener
-const addTodo = document.getElementById("addTodo");
-addTodo.addEventListener("click", addNewTodo);
+  // Remove Duplicate
+  if (
+    state.todos.some((todo) => {
+      return todo.description.toLowerCase() == inputValue.toLowerCase();
+    })
+  ) {
+    alert("Todo already exists");
+    return;
+  }
 
-console.log(state);
+  // Update State with new Todo
+  const id = Date.now();
+
+  state.todos.push({
+    description: inputValue,
+    id: id,
+    done: false,
+  });
+
+  // Reset Form
+  addTodoForm.reset();
+
+  localStorage.setItem("todoStateV1", JSON.stringify(state));
+
+  // Render
+  render();
+});
+
+// Load State from Local Storage
+loadFromLocalStorage();
+
+// Initial Render
+render();
