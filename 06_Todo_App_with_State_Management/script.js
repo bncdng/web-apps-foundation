@@ -22,29 +22,6 @@ function loadFromLocalStorage() {
   state = JSON.parse(loadedState);
 }
 
-// Event Listener for Filter
-menu.addEventListener("change", (e) => {
-  console.log(e.target);
-  if (e.target.type === "radio") {
-    radio.forEach((radioBtn) => {
-      radioBtn.checked = false;
-    });
-    state.filter = e.target.id;
-    render();
-  }
-});
-
-// Filter Function
-function generateFilter() {
-  if (state.filter == "all") {
-    return state.todos;
-  } else if (state.filter == "open") {
-    return state.todos.filter((item) => !item.done);
-  } else if (state.filter == "done") {
-    return state.todos.filter((item) => item.done);
-  }
-}
-
 // Render Function
 function render() {
   // Clear Todo List
@@ -84,7 +61,30 @@ function render() {
   });
 }
 
-// Event Listener for form submission
+// Filter Function
+function generateFilter() {
+  if (state.filter == "all") {
+    return state.todos;
+  } else if (state.filter == "open") {
+    return state.todos.filter((item) => !item.done);
+  } else if (state.filter == "done") {
+    return state.todos.filter((item) => item.done);
+  }
+}
+
+// Event Listener for Filter
+menu.addEventListener("change", (e) => {
+  console.log(e.target);
+  if (e.target.type === "radio") {
+    radio.forEach((radioBtn) => {
+      radioBtn.checked = false;
+    });
+    state.filter = e.target.id;
+    render();
+  }
+});
+
+// Event Listener for Form Submission
 addTodoForm.addEventListener("submit", (event) => {
   // Prevent from refreshing form
   event.preventDefault();
