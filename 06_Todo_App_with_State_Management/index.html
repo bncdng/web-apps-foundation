@@ -12,18 +12,19 @@
         <h1>Todo App</h1>
     </header>
     <main>
-        <!-- Filter Buttons -->
-        <label for="radio">All</label>
-        <input type="radio" name="todo" value="all" id="all">
-        <br>
-        <label for="radio">Open</label>
-        <input type="radio" name="todo" value="open" id="open">
-        <br>
-        <label for="radio">Done</label>
-        <input type="radio" name="todo" value="done" id="done">
-        <br>
-        <br>
-
+        <div class="menu">
+            <!-- Filter Buttons -->
+            <label for="all">All</label>
+            <input class="input-filter" type="radio" name="todo" id="all" checked>
+            <br>
+            <label for="open">Open</label>
+            <input class="input-filter" type="radio" name="todo" id="open">
+            <br>
+            <label for="done">Done</label>
+            <input class="input-filter" type="radio" name="todo" id="done">
+            <br>
+            <br>
+        </div>
         <!-- Remove Button -->
         <form>
             <button id="remove">Remove done Todos</button>
@@ -33,8 +34,8 @@
         <!-- Text input -->
         <form id="addTodoForm">
             <label>
-            <input type="text" placeholder="What's up?" id="newTodo">
-        </label>
+                <input type="text" placeholder="What's up?" id="newTodo">
+            </label>
 
             <!-- Add Button -->
             <button type="submit" id="addTodo">Add</button>
@@ -45,7 +46,7 @@
             <!-- <li>
                 <form>
                     <label for="checkbox">
-                        <input type="checkbox" name="done" id="checkbox"  checked>
+                        <input type="checkbox" name="done" id="check" checked>
                         <span>Learn CSS</span>
                     </label>
                 </form>

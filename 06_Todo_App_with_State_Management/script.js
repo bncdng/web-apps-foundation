@@ -1,6 +1,8 @@
 // Get elements from HTML
 const todoList = document.getElementById("todoList");
 const addTodoForm = document.getElementById("addTodoForm");
+const radio = Array.from(document.querySelector(".input-filter"));
+const menu = document.querySelector(".menu");
 
 // State
 let state = {
@@ -8,7 +10,7 @@ let state = {
     { description: "Learn HTML", id: Date.now(), done: true },
     { description: "Learn CSS", id: Date.now(), done: false },
   ],
-  filter: "",
+  filter: "all",
 };
 
 // Load from Local Storage
@@ -20,19 +22,43 @@ function loadFromLocalStorage() {
   state = JSON.parse(loadedState);
 }
 
+// Event Listener for Filter
+menu.addEventListener("change", (e) => {
+  console.log(e.target);
+  if (e.target.type === "radio") {
+    radio.forEach((radioBtn) => {
+      radioBtn.checked = false;
+    });
+    state.filter = e.target.id;
+    render();
+  }
+});
+
+// Filter Function
+function generateFilter() {
+  if (state.filter == "all") {
+    return state.todos;
+  } else if (state.filter == "open") {
+    return state.todos.filter((item) => !item.done);
+  } else if (state.filter == "done") {
+    return state.todos.filter((item) => item.done);
+  }
+}
+
 // Render Function
 function render() {
   // Clear Todo List
   todoList.innerHTML = "";
 
-  // Create HTML list item
-  state.todos.forEach((todo) => {
+  // Create HTML list item and iterate over each to check filter
+  generateFilter().forEach((todo) => {
     const input = document.createElement("input");
     input.type = "checkbox";
     input.name = "done";
-    input.id = "check";
+    input.id = "checkbox";
     input.checked = todo.done;
 
+    // Event Listener for state update in local storage
     input.addEventListener("change", () => {
       // State update when checkbox is changed
       todo.done = input.checked;
@@ -60,12 +86,13 @@ function render() {
 
 // Event Listener for form submission
 addTodoForm.addEventListener("submit", (event) => {
+  // Prevent from refreshing form
   event.preventDefault();
 
   // Validate and trim input value
   const inputValue = newTodo.value.trim();
 
-  // Can't be empty
+  // Input field can't be empty
   if (inputValue == "") {
     alert("Please insert Description");
     return;
