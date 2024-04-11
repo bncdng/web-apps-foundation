@@ -58,6 +58,11 @@ function render() {
     const li = document.createElement("li");
     li.append(form);
 
+    // Add a class to the list item based on the todo's done status
+    if (todo.done) {
+      li.classList.add("strike");
+    }
+
     todoList.append(li);
   });
 }
