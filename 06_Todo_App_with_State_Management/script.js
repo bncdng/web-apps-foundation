@@ -74,7 +74,6 @@ function generateFilter() {
 
 // Event Listener for Filter
 menu.addEventListener("change", (e) => {
-  console.log(e.target);
   if (e.target.type === "radio") {
     radio.forEach((radioBtn) => {
       radioBtn.checked = false;
