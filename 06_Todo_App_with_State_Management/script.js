@@ -3,6 +3,7 @@ const todoList = document.getElementById("todoList");
 const addTodoForm = document.getElementById("addTodoForm");
 const radio = Array.from(document.querySelector(".input-filter"));
 const menu = document.querySelector(".menu");
+const removeDoneTodos = document.getElementById("removeDoneTodos");
 
 // State
 let state = {
@@ -72,6 +73,13 @@ function generateFilter() {
   }
 }
 
+// Remove Done Todos Function
+function removeDone() {
+  state.todos = state.todos.filter((todo) => !todo.done);
+  localStorage.setItem("todoStateV1", JSON.stringify(state));
+  render();
+}
+
 // Event Listener for Filter
 menu.addEventListener("change", (e) => {
   if (e.target.type === "radio") {
@@ -81,6 +89,12 @@ menu.addEventListener("change", (e) => {
     state.filter = e.target.id;
     render();
   }
+});
+
+// Event Listener for Remove Done Todos Button
+removeDoneTodos.addEventListener("click", (event) => {
+  event.preventDefault();
+  removeDone();
 });
 
 // Event Listener for Form Submission
