@@ -1,0 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #f1f8fe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  all: unset;
+  background-color: #2b71f4;
+  color: white;
+  margin: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+button:hover {
+  background-color: #558aee;
+}
+
+button:active {
+  background-color: #0b52d5;
+}
+
+blockquote {
+  _margin: auto 50px;
+}
+
+#quote {
+  font-size: 2rem;
+}
+
+#author {
+  font-size: 1rem;
+}
