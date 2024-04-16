@@ -1,34 +1,29 @@
 const red = document.getElementById("red");
 const green = document.getElementById("green");
 const blue = document.getElementById("blue");
-const colorDisplay = document.getElementById("colorDisplay");
+const colorHex = document.getElementById("colorHex");
 
+// Number to hexString
+function toHexString(num) {
+  const hexString = num.toString(16);
+  if (hexString.length == 1) {
+    return "0" + hexString;
+  }
+  return hexString;
+}
+
+// Render Function
 function render() {
-  const r = Number(redStringValue);
-  const g = Number(greenStringValue);
-  const b = Number(blueStringValue);
+  const r = Number(red.value);
+  const g = Number(green.value);
+  const b = Number(blue.value);
 
   // 1. Hintergrund einfärben
   document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 
   // 2. Hex Wert darstellen
-  let redHex = r.toString(16);
-  let greenHex = g.toString(16);
-  let blueHex = b.toString(16);
 
-  if (redHex.length == 1) {
-    redHex = "0" + redHex;
-  }
-
-  if (greenHex.length == 1) {
-    greenHex = "0" + greenHex;
-  }
-
-  if (blueHex.length == 1) {
-    blueHex = "0" + blueHex;
-  }
-
-  colorHex.textContent = `#${redHex}${greenHex}${blueHex}`;
+  colorHex.textContent = `#${toHexString(r)}${toHexString(g)}${toHexString(b)}`;
 }
 
 render();
@@ -44,4 +39,15 @@ green.addEventListener("input", () => {
 
 blue.addEventListener("input", () => {
   render();
+});
+
+// Random Color Button
+const randomColor_btn = document.getElementById("randomColor_btn");
+
+randomColor_btn.addEventListener("click", () => {
+  fetch("https://dummy-apis.netlify.app/api/color")
+    .then((response) => response.json())
+    .then((data) => {
+      document.body.style.backgroundColor = data.color;
+    });
 });

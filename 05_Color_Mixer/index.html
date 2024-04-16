@@ -6,25 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <title>Color Mixer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Slider R  -->
-    <label for="red">r</label>
-    <input type="range" min="0" max="255" value="50" step="1" id="red">
-
-    <!-- Slider G -->
-    <label for="green">g</label>
-    <input type="range" min="0" max="255" value="50" step="1" id="green">
-
-    <!-- Slider B -->
-    <label for="blue">b</label>
-    <input type="range" min="0" max="255" value="50" step="1" id="blue">
-
-    <!-- Hex -->
-    <div id="hex">#000000</div>
-    
+    <header>
+        <!-- Slider R  -->
+        <div><label for="red">r</label>
+            <input type="range" min="0" max="255" value="50" step="1" id="red">
+        </div>
+        <!-- Slider G -->
+        <div>
+            <label for="green">g</label>
+            <input type="range" min="0" max="255" value="50" step="1" id="green">
+        </div>
+        <!-- Slider B -->
+        <div>
+            <label for="blue">b</label>
+            <input type="range" min="0" max="255" value="50" step="1" id="blue">
+        </div>
+        <!-- Hex -->
+        <div id="colorHex">#000000</div>
+    <button id="randomColor_btn">Random Color</button>
+    </header>
     <script src="script.js"></script>
+
 </body>
 
 </html>
