@@ -4,7 +4,7 @@ const getQuoteButton = document.getElementById("getQuote");
 
 // Function to fetch a random quote from the API
 function fetchQuote() {
-  fetch("https://api.quoetable.io/random")
+  fetch("https://api.quotable.io/random")
     .then((response) => response.json())
     .then((data) => {
       quote.textContent = data.content;
