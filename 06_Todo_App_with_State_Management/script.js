@@ -8,8 +8,8 @@ const removeDoneTodos = document.getElementById("removeDoneTodos");
 // State
 let state = {
   todos: [
-    { description: "Learn HTML", id: Date.now(), done: true },
-    { description: "Learn CSS", id: Date.now(), done: false },
+    // { description: "Learn HTML", id: Date.now(), done: true },
+    // { description: "Learn CSS", id: Date.now(), done: false },
   ],
   filter: "all",
 };

@@ -6,35 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App with State Mangement</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Splash&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <h1>Todo App</h1>
+        <h1>Todo or not Todo</h1>
     </header>
     <main>
         <div class="menu">
             <!-- Filter Buttons -->
-            <label for="all">All</label>
+            <label class="filterElements" for="all">All</label>
             <input class="input-filter" type="radio" name="todo" id="all" checked>
-            <br>
-            <label for="open">Open</label>
+
+            <label class="filterElements" for="open">Open</label>
             <input class="input-filter" type="radio" name="todo" id="open">
-            <br>
-            <label for="done">Done</label>
+
+            <label class="filterElements" for="done">Done</label>
             <input class="input-filter" type="radio" name="todo" id="done">
-            <br>
-            <br>
         </div>
-        <!-- Remove Button -->
-        <form>
-            <button id="removeDoneTodos">Remove done Todos</button>
-        </form>
-        <br>
 
         <!-- Text input -->
         <form id="addTodoForm">
-            <label>
+            <label class="listElements">
                 <input type="text" placeholder="What's up?" id="newTodo">
             </label>
 
@@ -53,6 +49,11 @@
                 </form>
             </li> -->
         </ul>
+
+        <!-- Remove Button -->
+        <form id="removeDoneTodosForm">
+            <button id="removeDoneTodos">Clear Done Todos</button>
+        </form>
     </main>
     <script src="script.js"></script>
 </body>
